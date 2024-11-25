@@ -73,4 +73,11 @@ const RegisterForm = styled.form`
   flex-direction: column;
   gap: 10px;
   margin: 10px;
+
+  button {
+  color: black;
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 20px;
+  }
 `;

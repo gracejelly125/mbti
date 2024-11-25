@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { questions } from "../data/questions";
+import styled from "styled-components";
 
 const TestForm = ({ onSubmit }) => {
   const [answers, setAnswers] = useState(
-    Array(questions.length).fill({ type: "", answer: "" }),
+    Array(questions.length).fill({ type: "", answer: "" })
   );
 
   const handleChange = (index, answer) => {
@@ -44,14 +45,20 @@ const TestForm = ({ onSubmit }) => {
           </div>
         </div>
       ))}
-      <button
+      <Button
         type="submit"
-        className="w-full bg-primary-color text-white py-3 rounded-lg font-semibold hover:bg-primary-dark transition duration-300 hover:text-[#FF5A5F]"
+        className="w-full bg-primary-color text-black py-3 rounded-lg font-semibold hover:bg-primary-dark transition duration-300 hover:text-[#FF5A5F]"
       >
         제출하기
-      </button>
+      </Button>
     </form>
   );
 };
 
 export default TestForm;
+
+const Button = styled.button`
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 20px;
+`;

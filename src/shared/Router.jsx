@@ -16,7 +16,8 @@ const PrivateRoute = ({ element }) => {
 };
 
 const PublicRoute = ({ element }) => {
-  return element;
+  const { isAuthenticated } = useContext(AuthContext);
+  return !isAuthenticated ? element : <Navigate to="/profile" />;
 };
 
 const Router = () => {
@@ -24,7 +25,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<PublicRoute element={<Home />} />} />
+          <Route index element={<Home />} />
           <Route path="login" element={<PublicRoute element={<Login />} />} />
           <Route path="signup" element={<PublicRoute element={<Signup />} />} />
           <Route path="profile" element={<PrivateRoute element={<Profile />} />} />

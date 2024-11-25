@@ -82,5 +82,5 @@ const StyledLink = styled(Link)`
   color: black;
   padding: 10px;
   border: 1px solid red;
-  border-radius: 10px;
+  border-radius: 20px;
 `;

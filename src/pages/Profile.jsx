@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUserProfile, updateProfile } from "../api/auth";
 import useInput from "../hooks/useInput";
+import styled from "styled-components";
 
 const Profile = () => {
   const [newNickname, onChangeNewNicknameHandler, resetNewNickname] =
@@ -27,8 +28,8 @@ const Profile = () => {
 
   return (
     <>
-      <h1>프로필 수정</h1>
-      <form onSubmit={updateNicknameHandler}>
+      <Title>프로필 수정</Title>
+      <NicknameForm onSubmit={updateNicknameHandler}>
         <label htmlFor="">닉네임</label>
         <input
           type="text"
@@ -38,9 +39,31 @@ const Profile = () => {
           required
         />
         <button type="submit">프로필 업데이트</button>
-      </form>
+      </NicknameForm>
     </>
   );
 };
 
 export default Profile;
+
+const Title = styled.h1`
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+`;
+
+const NicknameForm = styled.form`
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px;
+
+  button {
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 20px;
+  }
+`;

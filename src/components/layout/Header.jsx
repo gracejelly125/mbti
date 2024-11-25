@@ -57,10 +57,10 @@ export default Header;
 const HeaderContainer = styled.header`
   width: 100%;
   background: gray;
-  height: 50px;
+  height: 70px;
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 30px;
   color: white;
   font-weight: 600;
   gap: 20px;
