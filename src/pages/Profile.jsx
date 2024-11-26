@@ -38,7 +38,7 @@ const Profile = () => {
     <>
       <Title>프로필 수정</Title>
       <NicknameForm onSubmit={updateNicknameHandler}>
-        <label htmlFor="">닉네임</label>
+        <label>닉네임</label>
         <input
           type="text"
           // 새로운 닉네임이 없다면, 현재 닉네임을 보여준다.
@@ -71,8 +71,8 @@ const NicknameForm = styled.form`
   margin: 10px;
 
   button {
-    padding: 10px;
-    border: 1px solid red;
-    border-radius: 20px;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 6px 12px;
   }
 `;

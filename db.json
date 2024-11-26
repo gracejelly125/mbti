@@ -1,3 +1,46 @@
 {
-  "testResults": []
+  "testResults": [
+    {
+      "id": 1732612655794,
+      "userId": "grace1",
+      "result": "ESTP",
+      "visibility": true
+    },
+    {
+      "id": 1732612741017,
+      "userId": "grace2",
+      "result": "INFP",
+      "visibility": false
+    },
+    {
+      "id": 1732616480443,
+      "userId": "grace3",
+      "result": "ISFJ",
+      "visibility": true
+    },
+    {
+      "id": 1732618985318,
+      "userId": "grace3",
+      "result": "ESTJ",
+      "visibility": true
+    },
+    {
+      "id": 1732620366368,
+      "userId": "grace4",
+      "result": "ESTJ",
+      "visibility": true
+    },
+    {
+      "id": 1732620968880,
+      "userId": "grace5",
+      "result": "ESTJ",
+      "visibility": false
+    },
+    {
+      "id": 1732620977226,
+      "userId": "grace5",
+      "result": "ESTJ",
+      "visibility": true
+    }
+  ]
 }

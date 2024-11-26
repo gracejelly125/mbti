@@ -4,13 +4,13 @@ import styled from "styled-components";
 import { AuthContext } from "../../context/AuthContext";
 
 const Header = () => {
-  const { isAuthenticated, logout } = useContext(AuthContext);
+  const { isAuthenticated, removeToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const logoutHandler = () => {
     const confirmLogout = window.confirm("정말로 로그아웃 하시겠습니까?");
     if (confirmLogout) {
-      logout();
+      removeToken();
       navigate("/");
     }
   };

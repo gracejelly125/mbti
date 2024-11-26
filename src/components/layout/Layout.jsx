@@ -20,4 +20,5 @@ const LayoutContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+  padding-bottom: 40px;
 `;

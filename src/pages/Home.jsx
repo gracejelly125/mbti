@@ -39,10 +39,10 @@ const Home = () => {
 export default Home;
 
 const TitleContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   h1 {
     font-size: 30px;
@@ -80,7 +80,7 @@ const Container = styled.div`
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
-  padding: 10px;
-  border: 1px solid red;
-  border-radius: 20px;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 6px 12px;
 `;

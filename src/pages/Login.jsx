@@ -17,12 +17,13 @@ const Login = () => {
   // token을 로컬스토리지에 저장한다.
   // 이후 홈 화면으로 이동한다.
   const loginHandler = async () => {
-    const {accessToken} = await login({
+    const data = await login({
       id: userId.value,
       password: password.value,
     });
-    console.log(setToken)
-    setToken(accessToken);
+    console.log('id', data.userId);
+    console.log('accessToken', data.accessToken)
+    setToken(data.accessToken, data.userId);
     navigate("/");
     userId.reset();
     password.reset();

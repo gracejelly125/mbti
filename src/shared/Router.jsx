@@ -4,10 +4,11 @@ import Login from "../pages/Login";
 import Profile from "../pages/Profile";
 import Layout from "../components/layout/Layout";
 import Signup from "../pages/Signup";
-import TestResult from "../pages/TestResultpage";
 import TestPage from "../pages/TestPage";
+import Results from "../pages/Results";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+
 
 // 로그인 상태일 때 해당 페이지 접근 가능, 아니면 login 페이지로 강제 이동
 const PrivateRoute = ({ element }) => {
@@ -33,7 +34,7 @@ const Router = () => {
           <Route path="test" element={<PrivateRoute element={<TestPage />} />} />
           <Route
             path="results"
-            element={<PrivateRoute element={<TestResult />} />}
+            element={<PrivateRoute element={<Results />} />}
           />
         </Route>
       </Routes>

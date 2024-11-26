@@ -68,8 +68,8 @@ const Form = styled.form`
   margin: 10px;
 
   button {
-    padding: 10px;
-    border: 1px solid red;
-    border-radius: 20px;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 6px 12px;
   }
 `;
