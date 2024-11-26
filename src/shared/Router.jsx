@@ -9,12 +9,13 @@ import TestPage from "../pages/TestPage";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-// 로그인 상태면 
+// 로그인 상태일 때 해당 페이지 접근 가능, 아니면 login 페이지로 강제 이동
 const PrivateRoute = ({ element }) => {
   const { isAuthenticated } = useContext(AuthContext);
   return isAuthenticated ? element : <Navigate to="/login" />;
 };
 
+// 로그인 상태가 아닐 때, 해당 페이지(login) 접근 가능, 로그인 상태면 profile 페이지로 이동
 const PublicRoute = ({ element }) => {
   const { isAuthenticated } = useContext(AuthContext);
   return !isAuthenticated ? element : <Navigate to="/profile" />;

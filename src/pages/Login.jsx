@@ -4,47 +4,34 @@ import styled from "styled-components";
 import { login } from "../api/auth";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import AuthForm from "../components/AuthForm";
 
 
 const Login = () => {
-  const [userId, onChangeUserIdHandler, resetUserId] = useInput("");
-  const [password, onChangePasswordHandler, resetPassword] = useInput("");
+  const userId = useInput("");
+  const password = useInput("");
   const { setToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const loginHandler = async (e) => {
-    e.preventDefault();
+  // user 정보를 api에 보낸 다음 해당하는 token 을 가져온다.
+  // token을 로컬스토리지에 저장한다.
+  // 이후 홈 화면으로 이동한다.
+  const loginHandler = async () => {
     const {accessToken} = await login({
-      id: userId,
-      password: password,
+      id: userId.value,
+      password: password.value,
     });
     console.log(setToken)
     setToken(accessToken);
     navigate("/");
-    resetUserId();
-    resetPassword();
+    userId.reset();
+    password.reset();
   };
 
   return (
     <>
       <Title>로그인</Title>
-      <LoginForm onSubmit={loginHandler}>
-        <input
-          type="text"
-          value={userId}
-          placeholder="아이디"
-          onChange={onChangeUserIdHandler}
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          placeholder="비밀번호"
-          onChange={onChangePasswordHandler}
-          required
-        />
-        <button type="submit">로그인</button>
-      </LoginForm>
+      <AuthForm mode="login" onSubmit={loginHandler} userId={userId} password={password}/>
       <span>계정이 없으신가요?</span>
       <Link to="/signup">회원가입</Link>
     </>
@@ -57,20 +44,4 @@ const Title = styled.h1`
   font-size: 20px;
   font-weight: bold;
   margin-top: 20px;
-`;
-
-const LoginForm = styled.form`
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 10px;
-
-  button {
-  padding: 10px;
-  border: 1px solid red;
-  border-radius: 20px;
-  }
 `;
