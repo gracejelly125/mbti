@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const jsonApi = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://adventurous-perfect-breakfast.glitch.me",
   timeout: 5000,
   headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
 });
