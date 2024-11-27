@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { register } from "../api/auth";
 import AuthForm from "../components/AuthForm";
 import { toast } from "react-toastify";
+import { Title } from "../styles/common";
 
 const Signup = () => {
   const userId = useInput("");
@@ -51,17 +52,11 @@ const Signup = () => {
 
 export default Signup;
 
-const Title = styled.h1`
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 20px;
-`;
-
 const Msg = styled.span`
   margin-bottom: 4px;
 `
 
 const StyledLink = styled(Link)`
-  color: red;
-  padding: 4px;
+  color: var(--red--color);
+  padding: 4px 12px;
 `

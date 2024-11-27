@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
 import { toast } from "react-toastify";
+import { Title } from "../styles/common";
 
 const Login = () => {
   const userId = useInput("");
@@ -51,17 +52,11 @@ const Login = () => {
 
 export default Login;
 
-const Title = styled.h1`
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 20px;
-`;
-
 const Msg = styled.span`
   margin-bottom: 4px;
 `
 
 const StyledLink = styled(Link)`
-  color: red;
-  padding: 4px;
+  color: var(--red--color);
+  padding: 4px 12px;
 `

@@ -9,13 +9,14 @@ const TestItem = ({
   deleteResultHandler,
 }) => {
   const isOwner = result.userId === currentUserId;
-  const buttonText = result.visibility === true ? "비공개로 전환" : "공개로 전환";
+  const buttonText =
+    result.visibility === true ? "비공개로 전환" : "공개로 전환";
 
   return (
     <ListItem>
       <ListTitle>
-        <p>{result.userId}</p>
-        <p>({changeTime(result.id)})</p>
+        <h3>🎅 {result.userId}</h3>
+        <h4>({changeTime(result.id)})</h4>
       </ListTitle>
       <MbtiName>{result.mbtiName}</MbtiName>
       <h3>{mbtiDescriptions[result.mbtiName]}</h3>
@@ -43,23 +44,30 @@ export default TestItem;
 const ListItem = styled.li`
   width: 600px;
   height: auto;
-  border: 1px solid black;
+  border: 1px solid var(--border--color);
   border-radius: 10px;
   padding: 20px;
 `;
 
 const ListTitle = styled.div`
   display: flex;
+  font-size: 18px;
   justify-content: space-between;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--border--color);
   padding-bottom: 10px;
+  align-items: flex-end;
+
+  h4 {
+    font-size: 14px;
+    color: #A9A9A9;
+  }
 `;
 
 const MbtiName = styled.h1`
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  padding: 5px;
+  padding: 6px;
 `;
 
 const ButtonContainer = styled.div`
@@ -68,8 +76,14 @@ const ButtonContainer = styled.div`
   gap: 10px;
 
   button {
-    border: 1px solid black;
+    margin-top: 10px;
+    border: 1px solid var(--border--color);
     border-radius: 6px;
     padding: 6px 12px;
+
+    &:hover {
+      background-color: var(--red--color);
+      color: white;
+    }
   }
 `;

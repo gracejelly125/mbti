@@ -20,5 +20,7 @@ const LayoutContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  padding-bottom: 40px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
 `;

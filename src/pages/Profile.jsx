@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getUserProfile, updateProfile } from "../api/auth";
 import useInput from "../hooks/useInput";
-import styled from "styled-components";
 import { toast } from "react-toastify";
+import { Form, Title } from "../styles/common";
 
 const Profile = () => {
   const newNickname = useInput("");
@@ -48,7 +48,7 @@ const Profile = () => {
   return (
     <>
       <Title>프로필 수정</Title>
-      <NicknameForm onSubmit={updateNicknameHandler}>
+      <Form onSubmit={updateNicknameHandler}>
         <label>닉네임</label>
         <input
           type="text"
@@ -59,31 +59,9 @@ const Profile = () => {
           required
         />
         <button type="submit">프로필 업데이트</button>
-      </NicknameForm>
+      </Form>
     </>
   );
 };
 
 export default Profile;
-
-const Title = styled.h1`
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 20px;
-`;
-
-const NicknameForm = styled.form`
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 10px;
-
-  button {
-    border: 1px solid black;
-    border-radius: 6px;
-    padding: 6px 12px;
-  }
-`;

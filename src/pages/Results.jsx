@@ -1,10 +1,10 @@
-import styled from "styled-components";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import { getTestResults } from "../api/testResults";
 import TestResultList from "../components/TestResultList";
 import { toast } from "react-toastify";
+import { Title } from "../styles/common";
 
 const Results = () => {
   // tanstackQuery 가 useState, useEffect를 대체해준다.
@@ -39,16 +39,10 @@ const Results = () => {
 
   return (
     <>
-      <Title>모든 테스트 결과</Title>
+      <Title>🎄 모든 테스트 결과 🎄</Title>
       <TestResultList testResults={testResults} />
     </>
   );
 };
 
 export default Results;
-
-const Title = styled.h1`
-  font-size: 20px;
-  font-weight: bold;
-  margin: 20px;
-`;

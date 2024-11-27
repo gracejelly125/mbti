@@ -69,9 +69,8 @@ const TestResultList = ({ testResults }) => {
 export default TestResultList;
 
 const Container = styled.ul`
-  max-width: 800px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   line-height: 1.5;
 `;

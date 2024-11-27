@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { Form } from "react-router-dom";
 
 const AuthForm = ({ mode, onSubmit, userId, password, nickname }) => {
   const isLogin = mode === "login";
@@ -50,18 +50,3 @@ const AuthForm = ({ mode, onSubmit, userId, password, nickname }) => {
 
 export default AuthForm;
 
-const Form = styled.form`
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 10px;
-
-  button {
-    border: 1px solid black;
-    border-radius: 6px;
-    padding: 6px 12px;
-  }
-`;

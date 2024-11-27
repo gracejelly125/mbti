@@ -59,12 +59,12 @@ export default Header;
 
 const HeaderContainer = styled.header`
   width: 100%;
-  background: gray;
+  background: var(--green--color);
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px;
+  padding: 0 20px;
   color: white;
   font-weight: 600;
   gap: 20px;
@@ -74,6 +74,7 @@ const HeaderContainer = styled.header`
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    max-width: 1200px;
   }
 
   ul {
@@ -100,19 +101,20 @@ const HeaderContainer = styled.header`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: white;
+  padding: 4px 6px;
 `;
 
 const LoginLink = styled(StyledLink)`
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 50px;
-  padding: 4px 8px;
+  padding: 6px 12px;
 `;
 
 const LogoutButton = styled.button`
   border: none;
   border-radius: 50px;
-  padding: 4px 8px;
-  background-color: black;
+  padding: 6px 12px;
+  background-color: var(--red--color);
   color: white;
 `;
