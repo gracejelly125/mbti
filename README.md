@@ -1,8 +1,50 @@
-# React + Vite
+# 회원제 MBIT 테스트 사이트 만들기
+----
+## 프로젝트의 목표
+- 인증 및 권한 관리를 통해 사용자의 데이터를 안전하게 보호하는 방법을 배운다.
+- Axios와 Tanstack Query(React Query)를 활용하여 비동기 데이터를 효율적으로 관리한다.
+- json-server를 사용해 로컬 환경에서 API 서버를 구축한다.
+----
+## 기능
+### 1. 회원가입 / 로그인 / 프로필 관리 기능 구현
+- JWT 인증 방식을 사용하여 인증 및 권한 관리 기능을 구현한다.
+- 회원가입 페이지 : 새로운 사용자가 계정을 생성할 수 있도록 한다.
+- 로그인 페이지 : 사용자가 자신의 계정으로 로그인할 수 있도록 한다.
+- 프로필 페이지 : 사용자가 자신의 닉네임을 확인하고 닉네임을 변경할 수 있도록 한다.
+ 
+### 2. MBTI 테스트 제공  
+- 사용자가 MBTI 테스트를 진행할 수 있도록 한다.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 3. 테스트 결과 계산 및 저장
+- json-server를 사용하여 테스트 결과를 관리한다.
+- 사용자의 테스트 결과를 보여주고, 모든 테스트 결과에 보이도록 저장한다.
 
-Currently, two official plugins are available:
+### 4. 테스트 결과 관리 기능
+- visivility 변경 버튼과 삭제 버튼을 제공한다.
+- 본인 소유의 테스트 결과만 공개 여부 변경과 삭제가 가능하도록 조건을 설정한다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 5. axios를 이용한 API 호출
+- axios 인스턴스를 사용하여 jsonApi와 authApi 호출을 관리한다.
+
+### 6. 로그인 유지 기능 구현
+- 새로고침해도 로그인이 유지될 수 있도록 구현한다.
+- localStorage를 활용하여 JWT 토큰을 저장, 삭제하는 로직을 구현한다.
+
+### 7. Tanstack Query 사용
+- 테스트 결과의 상태 관리를 Tanstack Query를 사용하여 관리한다.
+
+### 8. Axios Instance 사용
+- axios 인스턴스를 활용하며, 코드의 재사용성과 유지보수성을 높인다.
+
+----
+## 사용한 툴
+- React
+- Tanstack Query
+- Toastify
+- Tailwind
+- Axios
+- json-server
+- styled-components
+----
+## 결과물
+- vercel 배포 링크 : [https://mbti-tan.vercel.app/]
