@@ -43,8 +43,8 @@ const Signup = () => {
         password={password}
         nickname={nickname}
       />
-      <span>이미 계정이 있으신가요?</span>
-      <Link to="/login">로그인</Link>
+      <Msg>이미 계정이 있으신가요?</Msg>
+      <StyledLink to="/login">로그인</StyledLink>
     </>
   );
 };
@@ -56,3 +56,12 @@ const Title = styled.h1`
   font-weight: bold;
   margin-top: 20px;
 `;
+
+const Msg = styled.span`
+  margin-bottom: 4px;
+`
+
+const StyledLink = styled(Link)`
+  color: red;
+  padding: 4px;
+`

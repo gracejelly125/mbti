@@ -6,7 +6,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUserId, setCurrentUserId] = useState(null);
   // 로컬스토리지 token 유지 기능 및 현재사용자 ID 저장
-  // isAuthenticated 로 로그인 중인지 확인
+  // isAuthenticated로 로그인 상태인지 확인
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     const userId = localStorage.getItem("currentUserId")

@@ -8,6 +8,7 @@ const Header = () => {
   const { isAuthenticated, removeToken } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // 로그아웃 버튼 클릭시 로컬스토리지 토큰 삭제
   const logoutHandler = () => {
     const confirmLogout = window.confirm("정말로 로그아웃 하시겠습니까?");
     if (confirmLogout) {
