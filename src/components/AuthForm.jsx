@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom";
+import { Form } from "../styles/common";
 
 const AuthForm = ({ mode, onSubmit, userId, password, nickname }) => {
   const isLogin = mode === "login";
