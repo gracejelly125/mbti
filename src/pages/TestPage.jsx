@@ -11,23 +11,24 @@ const TestPage = () => {
 
   const handleTestSubmit = async (answers) => {
     const mbtiResult = calculateMBTI(answers);
+    // console.log('mbtiResult', mbtiResult) => ESTJ 출력
     const token = localStorage.getItem("accessToken");
     const userProfile = await getUserProfile(token);
     // console.log("userProfile", userProfile);
 
-    const newResult = {
+    const newTestResult = {
       id: Date.now(),
       userId: userProfile.id,
-      result: mbtiResult,
+      mbtiName: mbtiResult,
       visibility: true,
     };
 
-    const results = await createTestResult(newResult);
+    const testResults = await createTestResult(newTestResult);
     // console.log("newResult", newResult);
     // console.log(results);
     // console.log('results', results)
-    // console.log('first', results.result)
-    setResult(results.result);
+    // console.log('testResults.mbtiName', testResults.mbtiName)
+    setResult(testResults.mbtiName);
   };
 
   const handleNavigateToResults = () => {

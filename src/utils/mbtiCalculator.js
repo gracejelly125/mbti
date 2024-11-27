@@ -48,7 +48,6 @@ export const calculateMBTI = (answers) => {
   const result = `${scores.E >= scores.I ? "E" : "I"}${
     scores.S >= scores.N ? "S" : "N"
   }${scores.T >= scores.F ? "T" : "F"}${scores.J >= scores.P ? "J" : "P"}`;
-
   return result;
 };
 
