@@ -20,7 +20,7 @@ const Results = () => {
         // console.log('testResults', testResults)
         // console.log('testResults.visibility', testResults.visibility)
         return testResults;
-      } catch (error) {   
+      } catch (error) {
         console.error("error =>", error);
         toast.error("모든 테스트 결과 불러오기 실패!");
       }
@@ -32,8 +32,6 @@ const Results = () => {
       );
     },
   });
-
-  
 
   if (isPending) return <h2>로딩중...</h2>;
 

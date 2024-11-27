@@ -31,7 +31,6 @@ const Login = () => {
     } catch (error) {
       console.error("error =>", error);
       toast.error("로그인 실패! 다시 시도해주세요.")
-      throw error;
     }
   };
 

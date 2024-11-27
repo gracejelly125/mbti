@@ -26,7 +26,6 @@ const TestPage = () => {
 
   const handleTestSubmit = async (answers) => {
     const mbtiResult = calculateMBTI(answers);
-    // console.log('mbtiResult', mbtiResult) => ESTJ 출력
     const token = localStorage.getItem("accessToken");
     try {
       const userProfile = await getUserProfile(token);
@@ -39,10 +38,10 @@ const TestPage = () => {
       };
 
       addMutation.mutate(newTestResult);
-      toast.success("테스트 성공!")
+      toast.success("테스트 성공!");
     } catch (error) {
       console.error("error =>", error);
-      toast.error("테스트 실패! 다시 시도해주세요.")
+      toast.error("테스트 실패! 다시 시도해주세요.");
     }
   };
 

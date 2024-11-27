@@ -23,7 +23,6 @@ const Profile = () => {
         throw error;
       }
     };
-
     fetchUserProfile();
   }, []);
 
@@ -31,18 +30,22 @@ const Profile = () => {
   // api 에 변경요청을 보낸다.
   // formdata를 통해 crud 가능하다.
   // 현재닉네임을 변경된 닉네임으로 렌더링해준다.
-  const updateNicknameHandler = (e) => {
+  const updateNicknameHandler = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
+    try {
+      const formData = new FormData();
     formData.append("nickname", newNickname.value);
-    const updateSuccess = updateProfile(formData);
-    if (!updateSuccess) {
-      toast.error("닉네임 변경 실패! 다시 시도해주세요.")
-      return;
+    const updateSuccess = await updateProfile(formData);
+    if (updateSuccess) {
+      toast.success("닉네임 변경 성공!");
+      setCurrentNickname(newNickname.value);
+      newNickname.reset();
     }
-    toast.success("닉네임 변경 성공!")
-    setCurrentNickname(newNickname.value);
-    newNickname.reset();
+    } catch (error) {
+      console.error("error=>", error)
+      toast.error("닉네임 변경 실패!")
+    }
+    
   };
 
   return (

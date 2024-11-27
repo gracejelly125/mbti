@@ -17,21 +17,19 @@ const Signup = () => {
   const signupHandler = async () => {
     try {
       await register({
-      id: userId.value,
-      password: password.value,
-      nickname: nickname.value,
-    });
-    toast.success("회원가입 성공!")
-    navigate("/login");
-    userId.reset();
-    password.reset();
-    nickname.reset();
+        id: userId.value,
+        password: password.value,
+        nickname: nickname.value,
+      });
+      toast.success("회원가입 성공!");
+      navigate("/login");
+      userId.reset();
+      password.reset();
+      nickname.reset();
     } catch (error) {
-      console.error("error =>", error)
-      toast.error("회원가입 실패! 다시 시도해주세요.")
-      throw error
+      console.error("error =>", error);
+      toast.error("회원가입 실패! 다시 시도해주세요.");
     }
-    
   };
 
   return (
@@ -54,9 +52,9 @@ export default Signup;
 
 const Msg = styled.span`
   margin-bottom: 4px;
-`
+`;
 
 const StyledLink = styled(Link)`
   color: var(--red--color);
   padding: 4px 12px;
-`
+`;
