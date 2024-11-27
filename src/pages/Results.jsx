@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import { getTestResults } from "../api/testResults";
-import TestResultList from "../components/TestResultList"
+import TestResultList from "../components/TestResultList";
+import { toast } from "react-toastify";
 
 const Results = () => {
   // tanstackQuery 가 useState, useEffect 상태관리 대체해줌
@@ -11,41 +12,35 @@ const Results = () => {
   // useQuery로 상태 관리해야됨
   const { currentUserId } = useContext(AuthContext);
 
-
   const { data: testResults, isPending } = useQuery({
     queryKey: ["testResults"],
     queryFn: async () => {
-      const { data } = await getTestResults();
-      return data;
-    }
-  }) 
+      try {
+        const testResults = await getTestResults();
+        // console.log('testResults', testResults)
+        // console.log('testResults.visibility', testResults.visibility)
+        return testResults;
+      } catch (error) {   
+        console.error("error =>", error);
+        toast.error("모든 테스트 결과 불러오기 실패!");
+      }
+    },
+    select: (testResults) => {
+      return testResults.filter(
+        (result) =>
+          result.visibility === true || result.userId === currentUserId
+      );
+    },
+  });
 
-  if (isPending) return <h2>로딩중...</h2>
+  
 
-  // 쿼리펑션 로직 작성
-  // filterdResults 를 dependency 배열에 넣어서, 상태가 변경될 때마다 리렌더링해준다.
-  // useEffect(() => {
-  //   const fetchTestResults = async () => {
-  //     try {
-  //       const fetchedTestResults = await getTestResults();
-  //       const filterdResults = fetchedTestResults.filter(
-  //         (result) =>
-  //           result.visibility === true || result.userId === currentUserId
-  //       );
-  //       setResults(filterdResults);
-  //     } catch (error) {
-  //       console.error("error =>", error);
-  //       throw error;
-  //     }
-  //   };
-
-  //   fetchTestResults();
-  // }, [currentUserId]);
+  if (isPending) return <h2>로딩중...</h2>;
 
   return (
     <>
       <Title>모든 테스트 결과</Title>
-      <TestResultList TestResults={testResults} />
+      <TestResultList testResults={testResults} />
     </>
   );
 };

@@ -14,11 +14,12 @@ const TestResultList = ({ testResults }) => {
   const queryClient = useQueryClient();
 
   const toggleMutation = useMutation({
-    mutationFn: async (id, visibility) => {
-      await updateTestResultVisibility(id, !visibility);
+    mutationFn: async ({id, visibility}) => {
+      await updateTestResultVisibility( id, visibility );
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["testResults"]);
+      toast.success("전환 성공!")
     },
     onError: () => {
       toast.error("전환 실패! 다시 시도해주세요.");
@@ -70,20 +71,13 @@ const TestResultList = ({ testResults }) => {
     },
   });
 
-  // const deleteResultHandler = async (id) => {
-  //   try {
-  //     await deleteTestResult(id);
-  //     const updatedResults = results.filter((result) => result.id !== id);
-  //     toast.success("삭제 성공!")
-  //     setResults(updatedResults);
-  //   } catch (error) {
-  //     console.error("error =>", error);
-  //     toast.error("삭제 실패! 다시 시도해주세요.")
-  //     throw error;
-  //   }
-  // };
+  const changeVisibilityHandler = (id, visibility) => {
+    toggleMutation.mutate({id, visibility})
+  }
 
-  // console.log('currentUserId', currentUserId)
+  const deleteResultHandler = (id) => {
+    removeMutation.mutate(id)
+  }
 
   return (
     <>
@@ -93,8 +87,8 @@ const TestResultList = ({ testResults }) => {
             key={result.id}
             result={result}
             currentUserId={currentUserId}
-            changeVisibilityHandler={() => toggleMutation.mutate(result.id, result.visibility)}
-            deleteResultHandler={() => removeMutation.mutate(result.id)}
+            changeVisibilityHandler={changeVisibilityHandler}
+            deleteResultHandler={deleteResultHandler}
           />
         ))}
       </Container>
