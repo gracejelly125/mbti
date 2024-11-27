@@ -19,12 +19,6 @@
       "visibility": false
     },
     {
-      "id": 1732684848129,
-      "userId": "grace1",
-      "mbtiName": "ESTJ",
-      "visibility": true
-    },
-    {
       "id": 1732686674402,
       "userId": "grace2",
       "mbtiName": "ESTJ",
@@ -39,6 +33,18 @@
     {
       "id": 1732688231958,
       "userId": "grace2",
+      "mbtiName": "ESTJ",
+      "visibility": true
+    },
+    {
+      "id": 1732688784018,
+      "userId": "grace1",
+      "mbtiName": "ESTJ",
+      "visibility": true
+    },
+    {
+      "id": 1732688812041,
+      "userId": "grace1",
       "mbtiName": "ESTJ",
       "visibility": true
     }
