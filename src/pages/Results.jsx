@@ -7,9 +7,9 @@ import TestResultList from "../components/TestResultList";
 import { toast } from "react-toastify";
 
 const Results = () => {
-  // tanstackQuery 가 useState, useEffect 상태관리 대체해줌
-  // 전역상태로 관리해야되는 DB.Json 에 있는 것과 동기화 시켜야 되는 상태!
-  // useQuery로 상태 관리해야됨
+  // tanstackQuery 가 useState, useEffect를 대체해준다.
+  // 전역상태로 관리해야 되는 DB.json의 데이터와 동기화 시켜준다.
+  // useQuery로 상태를 관리한다.
   const { currentUserId } = useContext(AuthContext);
 
   const { data: testResults, isPending } = useQuery({

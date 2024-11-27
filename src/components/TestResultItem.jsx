@@ -11,8 +11,6 @@ const TestItem = ({
   const isOwner = result.userId === currentUserId;
   const buttonText = result.visibility === true ? "비공개로 전환" : "공개로 전환";
 
-  console.log('Item => result.visibility ', !result.visibility)
-
   return (
     <ListItem>
       <ListTitle>
