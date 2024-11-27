@@ -60,6 +60,7 @@ const HeaderContainer = styled.header`
   height: 70px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 30px;
   color: white;
   font-weight: 600;

@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import changeTime from "../utils/changeTime";
-import { mbtiDescriptions } from "../utils/mbtiCalculator";
 import {
   deleteTestResult,
   updateTestResultVisibility,
 } from "../api/testResults";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import TestItem from "./TestResultItem";
 
 const TestResultList = ({ results, setResults }) => {
   // console.log("results", results);
@@ -26,7 +25,7 @@ const TestResultList = ({ results, setResults }) => {
       await updateTestResultVisibility(id, visibility);
       // 비공개로 돌렸을 때, 사용자의 글이 false 더라도 해당 사용자에게는 보여져야 함.
       // 근데 사용자한테도 안 보여져버림..
-      // => or 연산자로 해결!!! 
+      // => or 연산자로 해결!!!
       // 화면에 렌더링 바로 안되는 문제,,
       // 부모컴포넌트의 useEffect에 넣어줌, 의존성배열에 filterdResults 넣어줌
       // filterdResults 가 바뀔때마다 리렌더링!
@@ -65,33 +64,13 @@ const TestResultList = ({ results, setResults }) => {
     <>
       <Container>
         {results.map((result) => (
-          <li key={result.id}>
-            <ListTitle>
-              <p>{result.userId}</p>
-              <p>({changeTime(result.id)})</p>
-            </ListTitle>
-            <MbtiName>{result.result}</MbtiName>
-            <h3>{mbtiDescriptions[result.result]}</h3>
-            {/* {console.log('result.userId', result.userId)} */}
-            {result.userId === currentUserId && (
-              <ButtonContainer>
-                <button
-                  type="button"
-                  onClick={() =>
-                    changeVisibilityHandler(result.id, !result.visibility)
-                  }
-                >
-                  {result.visibility === true ? "비공개로 전환" : "공개로 전환"}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => deleteResultHandler(result.id)}
-                >
-                  삭제
-                </button>
-              </ButtonContainer>
-            )}
-          </li>
+          <TestItem
+            key={result.id}
+            result={result}
+            currentUserId={currentUserId}
+            changeVisibilityHandler={changeVisibilityHandler}
+            deleteResultHandler={deleteResultHandler}
+          />
         ))}
       </Container>
     </>
@@ -106,42 +85,4 @@ const Container = styled.ul`
   flex-direction: column;
   gap: 20px;
   line-height: 1.5;
-
-  li {
-    width: 600px;
-    height: auto;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 20px;
-
-    .right {
-      margin-right: 0;
-    }
-  }
-`;
-
-const ListTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid black;
-  padding-bottom: 10px;
-`;
-
-const MbtiName = styled.h1`
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  padding: 5px;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-
-  button {
-    border: 1px solid black;
-    border-radius: 6px;
-    padding: 6px 12px;
-  }
 `;

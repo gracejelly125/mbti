@@ -21,8 +21,8 @@ const Login = () => {
       id: userId.value,
       password: password.value,
     });
-    console.log('id', data.userId);
-    console.log('accessToken', data.accessToken)
+    // console.log('id', data.userId);
+    // console.log('accessToken', data.accessToken)
     setToken(data.accessToken, data.userId);
     navigate("/");
     userId.reset();

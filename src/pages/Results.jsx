@@ -8,6 +8,7 @@ const Results = () => {
   const [results, setResults] = useState([]);
   const { currentUserId } =useContext(AuthContext);
 
+  // filterdResults 를 dependency 배열에 넣어서, 상태가 변경될 때마다 리렌더링해준다.
   useEffect(() => {
     const fetchTestResults = async () => {
       const fetchedTestResults = await getTestResults();
