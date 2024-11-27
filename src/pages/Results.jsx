@@ -6,17 +6,22 @@ import { AuthContext } from "../context/AuthContext";
 
 const Results = () => {
   const [results, setResults] = useState([]);
-  const { currentUserId } =useContext(AuthContext);
+  const { currentUserId } = useContext(AuthContext);
 
   // filterdResults 를 dependency 배열에 넣어서, 상태가 변경될 때마다 리렌더링해준다.
   useEffect(() => {
     const fetchTestResults = async () => {
-      const fetchedTestResults = await getTestResults();
-      const filterdResults = fetchedTestResults.filter(
-        (result) =>
-          result.visibility === true || result.userId === currentUserId
-      ); 
-      setResults(filterdResults);
+      try {
+        const fetchedTestResults = await getTestResults();
+        const filterdResults = fetchedTestResults.filter(
+          (result) =>
+            result.visibility === true || result.userId === currentUserId
+        );
+        setResults(filterdResults);
+      } catch (error) {
+        console.error("error =>", error);
+        throw error;
+      }
     };
 
     fetchTestResults();
@@ -25,7 +30,7 @@ const Results = () => {
   return (
     <>
       <Title>모든 테스트 결과</Title>
-      <TestResultList results={results} setResults={setResults}/>
+      <TestResultList results={results} setResults={setResults} />
     </>
   );
 };
@@ -37,4 +42,3 @@ const Title = styled.h1`
   font-weight: bold;
   margin: 20px;
 `;
-

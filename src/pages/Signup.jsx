@@ -3,6 +3,7 @@ import useInput from "../hooks/useInput";
 import styled from "styled-components";
 import { register } from "../api/auth";
 import AuthForm from "../components/AuthForm";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const userId = useInput("");
@@ -12,17 +13,24 @@ const Signup = () => {
 
   // api에 회원 정보를 추가한다.
   // api 명세서 양식에 맞춰 보내는 것이 중요하다.
-  const signupHandler = () => {
-    register({
+  const signupHandler = async () => {
+    try {
+      await register({
       id: userId.value,
       password: password.value,
       nickname: nickname.value,
     });
-
+    toast.success("회원가입 성공!")
     navigate("/login");
     userId.reset();
     password.reset();
     nickname.reset();
+    } catch (error) {
+      console.error("error =>", error)
+      toast.error("회원가입 실패! 다시 시도해주세요.")
+      throw error
+    }
+    
   };
 
   return (

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const { isAuthenticated, removeToken } = useContext(AuthContext);
@@ -10,6 +11,7 @@ const Header = () => {
   const logoutHandler = () => {
     const confirmLogout = window.confirm("정말로 로그아웃 하시겠습니까?");
     if (confirmLogout) {
+      toast.info("로그아웃되었습니다.")
       removeToken();
       navigate("/");
     }

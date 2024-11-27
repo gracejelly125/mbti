@@ -5,7 +5,7 @@ import { login } from "../api/auth";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
-
+import { toast } from "react-toastify";
 
 const Login = () => {
   const userId = useInput("");
@@ -17,22 +17,32 @@ const Login = () => {
   // token을 로컬스토리지에 저장한다.
   // 이후 홈 화면으로 이동한다.
   const loginHandler = async () => {
-    const data = await login({
-      id: userId.value,
-      password: password.value,
-    });
-    // console.log('id', data.userId);
-    // console.log('accessToken', data.accessToken)
-    setToken(data.accessToken, data.userId);
-    navigate("/");
-    userId.reset();
-    password.reset();
+    try {
+      const data = await login({
+        id: userId.value,
+        password: password.value,
+      });
+      toast.success("로그인 성공!")
+      setToken(data.accessToken, data.userId);
+      navigate("/");
+      userId.reset();
+      password.reset();
+    } catch (error) {
+      console.error("error =>", error);
+      toast.error("로그인 실패! 다시 시도해주세요.")
+      throw error;
+    }
   };
 
   return (
     <>
       <Title>로그인</Title>
-      <AuthForm mode="login" onSubmit={loginHandler} userId={userId} password={password}/>
+      <AuthForm
+        mode="login"
+        onSubmit={loginHandler}
+        userId={userId}
+        password={password}
+      />
       <span>계정이 없으신가요?</span>
       <Link to="/signup">회원가입</Link>
     </>

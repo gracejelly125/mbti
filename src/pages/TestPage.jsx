@@ -13,22 +13,27 @@ const TestPage = () => {
     const mbtiResult = calculateMBTI(answers);
     // console.log('mbtiResult', mbtiResult) => ESTJ 출력
     const token = localStorage.getItem("accessToken");
-    const userProfile = await getUserProfile(token);
-    // console.log("userProfile", userProfile);
+    try {
+      const userProfile = await getUserProfile(token);
+      // console.log("userProfile", userProfile);
 
-    const newTestResult = {
-      id: Date.now(),
-      userId: userProfile.id,
-      mbtiName: mbtiResult,
-      visibility: true,
-    };
+      const newTestResult = {
+        id: Date.now(),
+        userId: userProfile.id,
+        mbtiName: mbtiResult,
+        visibility: true,
+      };
 
-    const testResults = await createTestResult(newTestResult);
-    // console.log("newResult", newResult);
-    // console.log(results);
-    // console.log('results', results)
-    // console.log('testResults.mbtiName', testResults.mbtiName)
-    setResult(testResults.mbtiName);
+      const testResults = await createTestResult(newTestResult);
+      // console.log("newResult", newResult);
+      // console.log(results);
+      // console.log('results', results)
+      // console.log('testResults.mbtiName', testResults.mbtiName)
+      setResult(testResults.mbtiName);
+    } catch (error) {
+      console.error("error =>", error);
+      throw error;
+    }
   };
 
   const handleNavigateToResults = () => {

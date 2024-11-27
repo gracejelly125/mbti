@@ -6,6 +6,7 @@ import {
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import TestItem from "./TestResultItem";
+import { toast } from "react-toastify";
 
 const TestResultList = ({ results, setResults }) => {
   // console.log("results", results);
@@ -51,9 +52,11 @@ const TestResultList = ({ results, setResults }) => {
       // console.log('results', results)
       const updatedResults = results.filter((result) => result.id !== id);
       // console.log("updatedResults", updatedResults);
+      toast.success("삭제 성공!")
       setResults(updatedResults);
     } catch (error) {
       console.error("error =>", error);
+      toast.error("삭제 실패! 다시 시도해주세요.")
       throw error;
     }
   };

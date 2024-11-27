@@ -10,6 +10,6 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <GlobalStyle />
     <App />
-    <ToastContainer />
+    <ToastContainer autoClose={2000} />
   </StrictMode>
 );

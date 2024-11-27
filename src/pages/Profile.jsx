@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getUserProfile, updateProfile } from "../api/auth";
 import useInput from "../hooks/useInput";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const newNickname = useInput("");
@@ -12,10 +13,15 @@ const Profile = () => {
   // 마운트됐을 때만 실행한다. (새로고침)
   useEffect(() => {
     const fetchUserProfile = async () => {
-      const userProfile = await getUserProfile(
-        localStorage.getItem("accessToken")
-      );
-      setCurrentNickname(userProfile.nickname);
+      try {
+        const userProfile = await getUserProfile(
+          localStorage.getItem("accessToken")
+        );
+        setCurrentNickname(userProfile.nickname);
+      } catch (error) {
+        console.error("error =>", error);
+        throw error;
+      }
     };
 
     fetchUserProfile();
@@ -29,7 +35,12 @@ const Profile = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("nickname", newNickname.value);
-    updateProfile(formData);
+    const updateSuccess = updateProfile(formData);
+    if (!updateSuccess) {
+      toast.error("닉네임 변경 실패! 다시 시도해주세요.")
+      return;
+    }
+    toast.success("닉네임 변경 성공!")
     setCurrentNickname(newNickname.value);
     newNickname.reset();
   };
