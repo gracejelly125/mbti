@@ -2,6 +2,7 @@ import axios from "axios";
 
 const authApi = axios.create({
   baseURL: "https://moneyfulpublicpolicy.co.kr",
+  timeout: 5000,
 });
 
 export const register = async (userData) => {
@@ -17,7 +18,6 @@ export const register = async (userData) => {
 export const login = async (userData) => {
   try {
     const response = await authApi.post("/login", userData);
-    console.log("response", response);
     return response.data;
   } catch (error) {
     console.error("error =>", error);

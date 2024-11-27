@@ -47,6 +47,18 @@
       "userId": "grace3",
       "mbtiName": "ISTP",
       "visibility": true
+    },
+    {
+      "id": 1732672429622,
+      "userId": "grace3",
+      "mbtiName": "ESTJ",
+      "visibility": true
+    },
+    {
+      "id": 1732672551209,
+      "userId": "grace1",
+      "mbtiName": "ESTJ",
+      "visibility": false
     }
   ]
 }
