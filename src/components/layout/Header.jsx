@@ -22,12 +22,12 @@ const Header = () => {
     <>
       <HeaderContainer>
         <nav>
-          <ul className="left">
+          <ul>
             <li>
               <StyledLink to="/">홈</StyledLink>
             </li>
           </ul>
-          <ul className="right">
+          <ul>
             <li>
               <StyledLink to="/profile">프로필</StyledLink>
             </li>
@@ -88,14 +88,6 @@ const HeaderContainer = styled.header`
   li {
     display: flex;
     align-items: center;
-  }
-
-  .left {
-    margin-right: auto;
-  }
-
-  .right {
-    margin-left: auto;
   }
 `;
 
