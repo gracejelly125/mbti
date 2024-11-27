@@ -7,36 +7,6 @@
       "visibility": true
     },
     {
-      "id": 1732668759831,
-      "userId": "grace125",
-      "mbtiName": "ESTJ",
-      "visibility": true
-    },
-    {
-      "id": 1732668796553,
-      "userId": "grace125",
-      "mbtiName": "ESTJ",
-      "visibility": true
-    },
-    {
-      "id": 1732668817056,
-      "userId": "grace125",
-      "mbtiName": "ESTJ",
-      "visibility": true
-    },
-    {
-      "id": 1732668945826,
-      "userId": "grace125",
-      "mbtiName": "ESTJ",
-      "visibility": true
-    },
-    {
-      "id": 1732668964445,
-      "userId": "grace125",
-      "mbtiName": "ESTJ",
-      "visibility": true
-    },
-    {
       "id": 1732670678892,
       "userId": "grace5",
       "mbtiName": "INFP",
@@ -59,6 +29,36 @@
       "userId": "grace1",
       "mbtiName": "ESTJ",
       "visibility": false
+    },
+    {
+      "id": 1732677129017,
+      "userId": "grace125",
+      "mbtiName": "ESTJ",
+      "visibility": true
+    },
+    {
+      "id": 1732677194396,
+      "userId": "grace125",
+      "mbtiName": "ESTJ",
+      "visibility": true
+    },
+    {
+      "id": 1732677473919,
+      "userId": "grace125",
+      "mbtiName": "ESTJ",
+      "visibility": true
+    },
+    {
+      "id": 1732677920530,
+      "userId": "grace125",
+      "mbtiName": "ESTJ",
+      "visibility": true
+    },
+    {
+      "id": 1732678656904,
+      "userId": "grace125",
+      "mbtiName": "ESTJ",
+      "visibility": true
     }
   ]
 }

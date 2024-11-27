@@ -9,6 +9,7 @@ const TestItem = ({
   deleteResultHandler,
 }) => {
   const isOwner = result.userId === currentUserId;
+  const buttonText = result.visibility === true ? "비공개로 전환" : "공개로 전환";
 
   return (
     <ListItem>
@@ -23,10 +24,10 @@ const TestItem = ({
           <button
             type="button"
             onClick={() =>
-              changeVisibilityHandler(result.id, !result.visibility)
+              changeVisibilityHandler(result.id, result.visibility)
             }
           >
-            {result.visibility === true ? "비공개로 전환" : "공개로 전환"}
+            {buttonText}
           </button>
           <button type="button" onClick={() => deleteResultHandler(result.id)}>
             삭제

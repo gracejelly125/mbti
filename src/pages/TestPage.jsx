@@ -4,10 +4,25 @@ import { calculateMBTI, mbtiDescriptions } from "../utils/mbtiCalculator";
 import { createTestResult } from "../api/testResults";
 import { useNavigate } from "react-router-dom";
 import { getUserProfile } from "../api/auth";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 const TestPage = () => {
   const navigate = useNavigate();
+  // 클라이언트 UI 상태는 별도 관리해줘야 한다.
+  // 인풋 상태를 관리하고 있는 것과 마찬가지이다.
+  // 제어 컴포넌트, 타이핑할 때마다 인풋 값을 일시적으로 관리해준다.
   const [result, setResult] = useState(null);
+
+  // API 호출과 관련된 상태를 관리한다.
+  const queryClient = useQueryClient();
+  const addMutation = useMutation({
+    mutationFn: (newTestResult) => createTestResult(newTestResult),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries(["testResults"]);
+      setResult(data.mbtiName);
+    },
+  });
 
   const handleTestSubmit = async (answers) => {
     const mbtiResult = calculateMBTI(answers);
@@ -15,7 +30,6 @@ const TestPage = () => {
     const token = localStorage.getItem("accessToken");
     try {
       const userProfile = await getUserProfile(token);
-      // console.log("userProfile", userProfile);
 
       const newTestResult = {
         id: Date.now(),
@@ -24,15 +38,11 @@ const TestPage = () => {
         visibility: true,
       };
 
-      const testResults = await createTestResult(newTestResult);
-      // console.log("newResult", newResult);
-      // console.log(results);
-      // console.log('results', results)
-      // console.log('testResults.mbtiName', testResults.mbtiName)
-      setResult(testResults.mbtiName);
+      addMutation.mutate(newTestResult);
+      toast.success("테스트 성공!")
     } catch (error) {
       console.error("error =>", error);
-      throw error;
+      toast.error("테스트 실패! 다시 시도해주세요.")
     }
   };
 
