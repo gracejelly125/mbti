@@ -28,17 +28,17 @@ const Header = () => {
             </li>
           </ul>
           <ul>
-            <li>
-              <StyledLink to="/profile">프로필</StyledLink>
-            </li>
-            <li>
-              <StyledLink to="/test">테스트</StyledLink>
-            </li>
-            <li>
-              <StyledLink to="/results">결과보기</StyledLink>
-            </li>
             {isAuthenticated ? (
               <>
+                <li>
+                  <StyledLink to="/profile">프로필</StyledLink>
+                </li>
+                <li>
+                  <StyledLink to="/test">테스트</StyledLink>
+                </li>
+                <li>
+                  <StyledLink to="/results">결과보기</StyledLink>
+                </li>
                 <li>
                   <LogoutButton onClick={logoutHandler}>로그아웃</LogoutButton>
                 </li>
