@@ -2,7 +2,6 @@ import axios from "axios";
 
 const authApi = axios.create({
   baseURL: "https://moneyfulpublicpolicy.co.kr",
-  timeout: 5000,
 });
 
 export const register = async (userData) => {
