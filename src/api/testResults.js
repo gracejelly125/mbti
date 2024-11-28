@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const jsonApi = axios.create({
-  baseURL: "https://adventurous-perfect-breakfast.glitch.me",
+  baseURL: import.meta.env.VITE_API_URL,
   headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
 });
 
