@@ -47,4 +47,4 @@
 - styled-components
 ----
 ## 결과물
-- vercel 배포 링크 : [(https://mbti-steel.vercel.app/)]
+- vercel 배포 링크 : [https://mbti-rouge.vercel.app/]
