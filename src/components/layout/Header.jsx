@@ -12,7 +12,7 @@ const Header = () => {
   const logoutHandler = () => {
     const confirmLogout = window.confirm("정말로 로그아웃 하시겠습니까?");
     if (confirmLogout) {
-      toast.info("로그아웃되었습니다.")
+      toast.info("로그아웃되었습니다.");
       removeToken();
       navigate("/");
     }
@@ -58,6 +58,9 @@ const Header = () => {
 export default Header;
 
 const HeaderContainer = styled.header`
+  position: fixed;
+  top: 0px;
+  z-index: 100;
   width: 100%;
   background: var(--green--color);
   height: 70px;
